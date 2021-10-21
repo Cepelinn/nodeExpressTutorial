@@ -1,25 +1,23 @@
 const experess = require('express');
 const router = experess.Router();
 
+const {
+    getAllTasks,
+    createTask,
+    getSingleTask,
+    updateTask,
+    deleteTask,
+} = require('../controllers/tasksControllers');
 
-router.get('/', (req, res) => {
-    res.send('get all task');
-});
 
-router.post('/', (req, res) => {
-    res.send('create new task');
-});
+router.get('/', getAllTasks);
 
-router.get('/:id', (res, req) => {
-    res.send('get single task');
-});
+router.post('/', createTask);
 
-router.patch('/:id', (req, res) => {
-    res.send('update single task');
-});
+router.get('/:id', getSingleTask);
 
-router.delete('/:id', (req, res) => {
-    res.send('delete single task');
-});
+router.patch('/:id', updateTask);
+
+router.delete('/:id', deleteTask);
 
 module.exports = router;
