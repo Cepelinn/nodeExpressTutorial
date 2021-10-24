@@ -9,10 +9,12 @@ const port = 3000
 //middleware
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //routes
 app.use('/api/v1/tasks', tasks);
 
+//connections
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
