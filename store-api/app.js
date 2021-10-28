@@ -25,12 +25,12 @@ app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 
 //server
-
+const connectDB = require('./db/connect');
 const port = process.env.PORT || 3000;
 
 const start = async() => {
     try {
-        //TODO connetc db
+        await connectDB(process.env.MONGO_URI);
         app.listen(port, console.log(`Server is listen on port: ${port}`))
     } catch (error) {
       console.log(error);  
