@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema = {
+const productSchema = new mongoose.Schema ({
     name:{
         type:String,
         required:[true, 'Product name must be provided'],
@@ -29,6 +29,6 @@ const productSchema = new mongoose.Schema = {
         }
         // enum:['ikea','liddy','caressa','marcos'],
     }
-}
+})
 
 module.exports = mongoose.model('Product', productSchema);
