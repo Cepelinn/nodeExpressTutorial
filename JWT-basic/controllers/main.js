@@ -3,22 +3,12 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const getDashboard = async (req, res) => {
-    const authHeader = req.headers.authorization;
-    
-    if(!authHeader || !authHeader.startsWith('Bearer ')){
-        throw new customAPIError('No token provided', 401);
-    }
-
-    const token = authHeader.split(' ')[1];
-
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const randomNum = Math.floor(Math.random() * 100);
-
-        res.status(200).json({msg:`Hello ${decoded.username}`,secret:`Your secrect number is ${randomNum}`})
-    } catch (error) {
-        throw new customAPIError('You are not authorized to get data', 401);
-    }
+        
+        res.status(200).json({
+            msg:`Hello ${req.user.username}`,
+            secret:`Your secrect number is ${randomNum}`
+        })
 }
 
 const login = async (req, res) => {
